@@ -5,18 +5,20 @@ import { useNavigate } from "react-router-dom";
 
 function SignUp() {
   const [name, setName] = useState("");
-  const [email, setEmail] = useState(""); 
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    axios.post('http://localhost:3001/register', {name, email, password})
-    .then((response) => {console.log(response)
-     navigate('/login')
-    })
-    .catch((error) => console.log( error))
-  }
+    axios
+      .post("http://localhost:3001/register", { name, email, password })
+      .then((response) => {
+        console.log(response);
+        navigate("/login");
+      })
+      .catch((error) => console.log(error));
+  };
 
   return (
     <div className="d-flex justify-content-center align-items-center bg-secondary vh-100">
@@ -61,15 +63,18 @@ function SignUp() {
               name="password"
               onChange={(e) => setPassword(e.target.value)}
             />
-            </div>
-            <button type="submit" className="btn btn-success w-100 rounded-0">
-                Register
-            </button>
-            </form>
-            <p>Already Have An Account</p>
-            <Link to="/login" className="btn btn-default border w-100 bg-light rounded-0 text-decoration-none">
-                Login
-            </Link>
+          </div>
+          <button type="submit" className="btn btn-success w-100 rounded-0">
+            Register
+          </button>
+        </form>
+        <p>Already Have An Account</p>
+        <Link
+          to="/login"
+          className="btn btn-default border w-100 bg-light rounded-0 text-decoration-none"
+        >
+          Login
+        </Link>
       </div>
     </div>
   );
